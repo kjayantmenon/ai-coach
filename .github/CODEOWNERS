@@ -1,0 +1,9 @@
+# Default owners
+* @kjayantmenon
+
+# Directory-specific ownership
+/src/ @kjayantmenon
+/docs/ @kjayantmenon
+
+# File-type ownership
+*.md @kjayantmenon

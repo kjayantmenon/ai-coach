@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/kjayantmenon/ai-coach/tree/main/docs
+    about: Review the project documentation before opening an issue.
+  - name: Support
+    url: https://github.com/kjayantmenon/ai-coach/blob/main/SUPPORT.md
+    about: Please use the support guide for help and questions.

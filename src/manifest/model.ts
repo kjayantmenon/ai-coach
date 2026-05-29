@@ -8,45 +8,45 @@ const ajv = new Ajv.default({ allErrors: true });
 const validateSchema = ajv.compile(manifestSchema);
 
 export function parseManifest(yamlContent: string): Manifest {
-    const raw: unknown = parse(yamlContent);
+  const raw: unknown = parse(yamlContent);
 
-    if (raw === null || raw === undefined || typeof raw !== 'object') {
-        throw new Error('Manifest must be a YAML object');
-    }
+  if (raw === null || raw === undefined || typeof raw !== 'object') {
+    throw new Error('Manifest must be a YAML object');
+  }
 
-    const result = validateManifest(raw);
+  const result = validateManifest(raw);
 
-    if (!result.valid) {
-        const messages = result.errors.map((e) => `${e.path}: ${e.message}`).join('; ');
-        throw new Error(`Invalid manifest: ${messages}`);
-    }
+  if (!result.valid) {
+    const messages = result.errors.map((e) => `${e.path}: ${e.message}`).join('; ');
+    throw new Error(`Invalid manifest: ${messages}`);
+  }
 
-    return raw as Manifest;
+  return raw as Manifest;
 }
 
 export function validateManifest(data: unknown): ValidationResult {
-    const valid = validateSchema(data);
+  const valid = validateSchema(data);
 
-    if (valid) {
-        return { valid: true, errors: [] };
-    }
+  if (valid) {
+    return { valid: true, errors: [] };
+  }
 
-    const errors = (validateSchema.errors ?? []).map((err: ErrorObject) => ({
-        path: err.instancePath || '/',
-        message: err.message ?? 'Unknown validation error',
-    }));
+  const errors = (validateSchema.errors ?? []).map((err: ErrorObject) => ({
+    path: err.instancePath || '/',
+    message: err.message ?? 'Unknown validation error',
+  }));
 
-    return { valid: false, errors };
+  return { valid: false, errors };
 }
 
 export function serializeManifest(manifest: Manifest): string {
-    return stringify(manifest);
+  return stringify(manifest);
 }
 
 export function createDefaultManifest(): Manifest {
-    return {
-        gabVersion: '0.1.0',
-        gabKbVersion: '0.0.1',
-        entities: [],
-    };
+  return {
+    gabVersion: '0.1.0',
+    gabKbVersion: '0.0.1',
+    entities: [],
+  };
 }

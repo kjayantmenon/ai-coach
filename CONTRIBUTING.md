@@ -107,7 +107,6 @@ For details, visit [https://cla.opensource.microsoft.com](https://cla.opensource
 
 We appreciate your contributions and your help in making AI Coach better.
 
+---
 
------
 Thank you
-

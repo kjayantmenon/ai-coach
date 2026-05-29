@@ -10,6 +10,9 @@
   "files": [
     "dist"
   ],
+  "bin": {
+    "gab": "./dist/cli/host.js"
+  },
   "engines": {
     "node": ">=20.0.0"
   },
@@ -27,10 +30,13 @@
   "dependencies": {
     "@azure/cosmos": "^4.3.0",
     "@azure/identity": "^4.6.0",
-    "dotenv": "^16.4.7"
+    "ajv": "^8.20.0",
+    "commander": "^15.0.0",
+    "dotenv": "^16.4.7",
+    "yaml": "^2.9.0"
   },
   "devDependencies": {
-    "@types/node": "^22.13.10",
+    "@types/node": "^22.19.19",
     "@typescript-eslint/eslint-plugin": "^8.26.1",
     "@typescript-eslint/parser": "^8.26.1",
     "eslint": "^8.57.1",

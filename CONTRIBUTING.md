@@ -106,3 +106,7 @@ For details, visit [https://cla.opensource.microsoft.com](https://cla.opensource
 - For security vulnerabilities, follow the instructions in [SECURITY.md](SECURITY.md).
 
 We appreciate your contributions and your help in making AI Coach better.
+
+---
+
+Thank you

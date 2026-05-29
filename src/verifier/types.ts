@@ -1,7 +1,7 @@
 export interface Diagnostic {
-    file: string;
-    line: number;
-    column: number;
-    severity: 'error' | 'warning';
-    message: string;
+  file: string;
+  line: number;
+  column: number;
+  severity: 'error' | 'warning';
+  message: string;
 }

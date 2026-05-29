@@ -3,37 +3,37 @@ import type { Kb, KbVersionRange } from './types.js';
 const SUPPORTED_RANGE: KbVersionRange = { min: '0.0.1', max: '0.1.0' };
 
 const KB_REGISTRY: Record<string, Kb> = {
-    '0.0.1': {
-        version: '0.0.1',
-        entities: [],
-    },
+  '0.0.1': {
+    version: '0.0.1',
+    entities: [],
+  },
 };
 
 export class KbStore {
-    private activeVersion: string;
+  private activeVersion: string;
 
-    public constructor(version: string) {
-        this.activeVersion = version;
+  public constructor(version: string) {
+    this.activeVersion = version;
+  }
+
+  public load(version: string): Kb {
+    const kb = KB_REGISTRY[version];
+
+    if (!kb) {
+      throw new Error(
+        `KB version "${version}" not found. Supported range: ${SUPPORTED_RANGE.min} – ${SUPPORTED_RANGE.max}`,
+      );
     }
 
-    public load(version: string): Kb {
-        const kb = KB_REGISTRY[version];
+    this.activeVersion = version;
+    return kb;
+  }
 
-        if (!kb) {
-            throw new Error(
-                `KB version "${version}" not found. Supported range: ${SUPPORTED_RANGE.min} – ${SUPPORTED_RANGE.max}`,
-            );
-        }
+  public getActiveVersion(): string {
+    return this.activeVersion;
+  }
 
-        this.activeVersion = version;
-        return kb;
-    }
-
-    public getActiveVersion(): string {
-        return this.activeVersion;
-    }
-
-    public getSupportedRange(): KbVersionRange {
-        return SUPPORTED_RANGE;
-    }
+  public getSupportedRange(): KbVersionRange {
+    return SUPPORTED_RANGE;
+  }
 }

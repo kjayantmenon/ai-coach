@@ -1,20 +1,20 @@
 export interface ManifestEntity {
-    name: string;
-    enabled: boolean;
+  name: string;
+  enabled: boolean;
 }
 
 export interface Manifest {
-    gabVersion: string;
-    gabKbVersion: string;
-    entities: ManifestEntity[];
+  gabVersion: string;
+  gabKbVersion: string;
+  entities: ManifestEntity[];
 }
 
 export interface ValidationError {
-    path: string;
-    message: string;
+  path: string;
+  message: string;
 }
 
 export interface ValidationResult {
-    valid: boolean;
-    errors: ValidationError[];
+  valid: boolean;
+  errors: ValidationError[];
 }

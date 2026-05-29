@@ -10,24 +10,24 @@ import type { Diagnostic } from './types.js';
  * will shell out to `dotnet build` or use a Roslyn-based in-process compiler.
  */
 export function verify(project: GeneratedProject): Diagnostic[] {
-    const diagnostics: Diagnostic[] = [];
+  const diagnostics: Diagnostic[] = [];
 
-    for (const [filePath, content] of project) {
-        if (!filePath.endsWith('.cs')) {
-            continue;
-        }
-
-        // Stub: verify file is non-empty
-        if (content.trim().length === 0) {
-            diagnostics.push({
-                file: filePath,
-                line: 0,
-                column: 0,
-                severity: 'error',
-                message: 'Empty C# file',
-            });
-        }
+  for (const [filePath, content] of project) {
+    if (!filePath.endsWith('.cs')) {
+      continue;
     }
 
-    return diagnostics;
+    // Stub: verify file is non-empty
+    if (content.trim().length === 0) {
+      diagnostics.push({
+        file: filePath,
+        line: 0,
+        column: 0,
+        severity: 'error',
+        message: 'Empty C# file',
+      });
+    }
+  }
+
+  return diagnostics;
 }
